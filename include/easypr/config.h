@@ -26,16 +26,16 @@ namespace easypr {
     PR_DETECT_CMSER = 0x04,  /**Character detect type, using mser  */
   };
 
-static const char* kDefaultSvmPath = "model/svm_hist.xml";
-static const char* kLBPSvmPath = "model/svm_lbp.xml";
-static const char* kHistSvmPath = "model/svm_hist.xml";
+static const char* kDefaultSvmPath = "/home/ws/tmp/EasyPR/model/svm_hist.xml";
+static const char* kLBPSvmPath = "/home/ws/tmp/EasyPR/model/svm_lbp.xml";
+static const char* kHistSvmPath = "/home/ws/tmp/EasyPR/model/svm_hist.xml";
 
-static const char* kDefaultAnnPath = "model/ann.xml";
-static const char* kChineseAnnPath = "model/ann_chinese.xml";
-static const char* kGrayAnnPath = "model/annCh.xml";
+static const char* kDefaultAnnPath = "/home/ws/tmp/EasyPR/model/ann.xml";
+static const char* kChineseAnnPath = "/home/ws/tmp/EasyPR/model/ann_chinese.xml";
+static const char* kGrayAnnPath = "/home/ws/tmp/EasyPR/model/annCh.xml";
 
 //This is important to for key transform to chinese
-static const char* kChineseMappingPath = "model/province_mapping";
+static const char* kChineseMappingPath = "/home/ws/tmp/EasyPR/model/province_mapping";
 
 typedef enum {
   kForward = 1, // correspond to "has plate"
@@ -131,17 +131,17 @@ private:\
   }
 
 // Load model. compatitable withe 3.0, 3.1 and 3.2
-#ifdef CV_VERSION_THREE_TWO
+//#ifdef CV_VERSION_THREE_TWO
   #define LOAD_SVM_MODEL(model, path) \
     model = ml::SVM::load(path);
   #define LOAD_ANN_MODEL(model, path) \
     model = ml::ANN_MLP::load(path);
-#else
-  #define LOAD_SVM_MODEL(model, path) \
-    model = ml::SVM::load<ml::SVM>(path);
-  #define LOAD_ANN_MODEL(model, path) \
-    model = ml::ANN_MLP::load<ml::ANN_MLP>(path);
-#endif
+//#else
+  //#define LOAD_SVM_MODEL(model, path) \
+    //model = ml::SVM::load<ml::SVM>(path);
+  //#define LOAD_ANN_MODEL(model, path) \
+    //model = ml::ANN_MLP::load<ml::ANN_MLP>(path);
+//#endif
 
 }
 
